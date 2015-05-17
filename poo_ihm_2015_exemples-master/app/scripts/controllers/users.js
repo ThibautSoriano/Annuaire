@@ -20,6 +20,19 @@ angular.module('pooIhmExemplesApp')
         $scope.users = data.data;
       });
 
+    if ($routeParams.userId) {
+      $routeParams.userId = $routeParams.userId.substr(1);
+      $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Users/' + $routeParams.userId)
+        .success(function (data) {
+          if (data.status == "success") {
+            $scope.currentUser = data.data;
+            $scope.currentUser.email = $scope.currentUser.email;
+            $scope.currentUser.website = $scope.currentUser.website;
+          }
+        });
+    }
+
+
     $scope.clickedOnUser = function(id) {
       this.details = !this.details;
       $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Users/' + id)
@@ -66,5 +79,34 @@ angular.module('pooIhmExemplesApp')
         })
     }
 
-    $scope.deleteU=function(id)
+    $scope.deleteU=function(id) {
+
+      $http.delete('http://poo-ihm-2015-rest.herokuapp.com/api/Users/' + id)
+        .success(function (data) {
+          if (data.status == "success") {
+            $location.path('/users');
+          }
+        })
+    }
+
+
+    $scope.editU=function(id, nomM, prenomM, emailM, websiteM) {
+
+      var datas = new Object();
+
+      datas.name = nomM;
+      datas.surname = prenomM;
+      datas.email = emailM;
+      datas.website = websiteM;
+
+      var jsonDatas = JSON.stringify(datas);
+
+      $http.put('http://poo-ihm-2015-rest.herokuapp.com/api/Users/' + id, jsonDatas)
+        .success(function (data) {
+          if (data.status == "success") {
+            $location.path('/users');
+          }
+        })
+    }
+
   }]);

@@ -1,0 +1,17 @@
+<div>
+  <h2>Modification d'un utilisateur :</h2>
+  <h3>Nom (ancien: {{currentUser.name}})</h3>
+  <input ng-required="true" type="text" ng-model="nomM"/>
+  <h3>Prénom (ancien: {{currentUser.surname}})</h3>
+  <input ng-required="true" type="text" ng-model="prenomM"/>
+  <h3>Email (ancien: {{currentUser.email}})</h3>
+  <input type="text" ng-model="emailM"/>
+  <h3>Website (ancien: {{currentUser.website}})</h3>
+  <input type="text" ng-model="websiteM"/>
+  <br><br>
+  <a class="btn btn-lg btn-success" ng-href="#/users" ng-click="editU(currentUser.id, nomM, prenomM, emailM, websiteM)">
+    Modifier
+  </a>
+
+
+</div>
