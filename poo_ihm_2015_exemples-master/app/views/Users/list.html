@@ -1,0 +1,15 @@
+<div>
+  <h3>Recherche :</h3>
+ <input ng-model="searchText"/>
+
+<h3>Liste des utilisateurs :</h3>
+
+<ul>
+<li ng-repeat="user in users | filter:searchText" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" ng-click="clickedOnUser(user.id)" class="cursor">
+  {{user.name}}, {{user.surname}}
+<span class="colour" ng-show = "hoverEdit">cliquez pour les détails</span>
+  <div ng-show="details"> infos :<br>{{currentUser.email}} <br>
+  {{currentUser.website}}</div></li>
+
+</ul>
+</div>

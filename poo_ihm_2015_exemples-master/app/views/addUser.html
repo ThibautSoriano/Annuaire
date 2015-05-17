@@ -1,0 +1,17 @@
+<div>
+  <h2>Ajout d'un utilisateur :</h2>
+  <h3>Nom</h3>
+  <input ng-required="true" type="text" ng-model="nomA"/>
+  <h3>Prénom</h3>
+  <input ng-required="true" type="text" ng-model="prenomA"/>
+  <h3>Email</h3>
+  <input type="text" ng-model="emailA"/>
+  <h3>Website</h3>
+  <input type="text" ng-model="websiteA"/>
+  <br><br>
+  <a class="btn btn-lg btn-success" ng-href="#/users" ng-click="addU(nomA, prenomA, emailA, websiteA)">
+    Valider
+  </a>
+
+
+</div>
